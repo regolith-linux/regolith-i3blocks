@@ -1,0 +1,28 @@
+Source: regolith-i3blocks
+Section: x11
+Priority: optional
+Maintainer: Ken Gilmer <kgilmer@gmail.com>
+Build-Depends: debhelper (>= 9), pandoc
+Standards-Version: 4.1.0
+Homepage: https://github.com/vivien/i3blocks
+Vcs-Browser: https://github.com/regolith-linux/regolith-i3blocks
+
+Package: regolith-i3blocks
+Architecture: linux-any kfreebsd-any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${perl:Depends}
+Recommends: regolith-i3-wm-gaps, 
+            acpi [amd64 i386 mipsel], 
+            gawk, 
+            alsa-utils [linux-any], 
+            sysstat [linux-any]
+Enhances: regolith-i3-wm-gaps
+Description: highly flexible status line for the i3-gaps window manager
+ Status line for the i3-gaps window manager and i3bar that handles clicks, signals
+ and language-agnostic user scripts.
+ .
+ The content of each block (e.g. time, battery status, network state, ...)
+ is the output of a command provided by the user.  Blocks are updated on click,
+ at a given interval of time or on a given signal, also specified by the user.
+ .
+ It aims to respect the i3bar protocol, providing customization such as text
+ alignment, urgency, color, and more.

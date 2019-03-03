@@ -1,0 +1,11 @@
+regolith-i3blocks (1.4-1ubuntu1) bionic; urgency=medium
+
+  * Updated wm dependency. 
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Sat, 02 Mar 2019 19:06:12 -0800
+
+regolith-i3blocks (1.4-1) bionic; urgency=medium
+
+  * Initial release
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Sat, 02 Mar 2019 11:34:13 -0800

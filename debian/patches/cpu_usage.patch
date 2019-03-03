@@ -1,0 +1,14 @@
+Author: Alok Singh <alephnull@gmail.com>
+Description: [cpu_usage] Handle mpstat output change
+
+--- a/scripts/cpu_usage
++++ b/scripts/cpu_usage
+@@ -31,7 +31,7 @@
+ $ENV{LC_ALL}="en_US"; # if mpstat is not run under en_US locale, things may break, so make sure it is
+ open (MPSTAT, 'mpstat 1 1 |') or die;
+ while (<MPSTAT>) {
+-    if (/^.*\s+(\d+\.\d+)\s+$/) {
++    if (/^Average.*\s+(\d+\.\d+)/) {
+         $cpu_usage = 100 - $1; # 100% - %idle
+         last;
+     }

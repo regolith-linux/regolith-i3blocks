@@ -1,0 +1,20 @@
+Description: make the build reproducible
+ this is done by sorting the list of sources, which will later turned into list
+ of objects (thus sent to the linker).
+ $(wildcard ) in a makefile is not stable, it's output depend from readdir().
+ This is easily fixed by wrapping it in $(sort )
+Author: Mattia Rizzolo <mattia@debian.org>
+Last-Update: 2016-07-22
+Forwarded: no
+
+--- a/Makefile
++++ b/Makefile
+@@ -26,7 +26,7 @@
+ CPPFLAGS += -DVERSION=\"${VERSION}\"
+ CFLAGS += -std=gnu99 -Iinclude -Wall -Werror=format-security
+ 
+-OBJS := $(wildcard src/*.c)
++OBJS := $(sort $(wildcard src/*.c))
+ OBJS := $(OBJS:.c=.o)
+ 
+ %.o: %.c %.h
