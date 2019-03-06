@@ -9,13 +9,13 @@ Vcs-Browser: https://github.com/regolith-linux/regolith-i3blocks
 
 Package: regolith-i3blocks
 Architecture: linux-any kfreebsd-any
-Depends: ${shlibs:Depends}, ${misc:Depends}, ${perl:Depends}
-Recommends: regolith-i3-wm-gaps, 
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${perl:Depends}, fonts-font-awesome
+Recommends: regolith-i3-wm, 
             acpi [amd64 i386 mipsel], 
             gawk, 
             alsa-utils [linux-any], 
             sysstat [linux-any]
-Enhances: regolith-i3-wm-gaps
+Enhances: regolith-i3-wm
 Description: highly flexible status line for the i3-gaps window manager
  Status line for the i3-gaps window manager and i3bar that handles clicks, signals
  and language-agnostic user scripts.
