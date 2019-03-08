@@ -2,3 +2,4 @@ makefile_reproducible.patch
 manpage_use_pandoc.patch
 cpu_usage.patch
 regolith-config.patch
+regolith-polish.patch

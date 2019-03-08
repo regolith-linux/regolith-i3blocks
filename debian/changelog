@@ -1,3 +1,9 @@
+regolith-i3blocks (1.4-1ubuntu6) bionic; urgency=medium
+
+  * Polish and cleanup 
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Thu, 07 Mar 2019 20:33:07 -0800
+
 regolith-i3blocks (1.4-1ubuntu5) bionic; urgency=medium
 
   * Simplify blocks for Regolith 

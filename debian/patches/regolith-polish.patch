@@ -1,0 +1,106 @@
+--- a/i3blocks.conf
++++ b/i3blocks.conf
+@@ -24,31 +24,33 @@
+ #
+ # The top properties below are applied to every block, but can be overridden.
+ # Each block command defaults to the script name to avoid boilerplate.
+-command=$SCRIPT_DIR/$BLOCK_NAME
++command=/usr/share/i3blocks/$BLOCK_NAME
+ separator_block_width=40
+-markup=none
++markup=pango
++color=#586e75
+ 
+ # CPU usage
+ #
+ # The script may be called with -w and -c switches to specify thresholds,
+ # see the script for details.
+ [cpu_usage]
+-label=
+-interval=10
+-min_width=CPU: 100.00%
++label= 
++interval=5
++min_width=100%
+ #separator=false
+ 
+ # Battery indicator
+ #
+ # The battery instance defaults to 0.
+ [battery]
+-label=⚡
+-#instance=1
++label= 
+ interval=30
+ 
+ # Date Time
+ #
+ [time]
+-command=date '+%m-%d %H:%M'
++label=
++command=echo "<span color='#93a1a1'>`date '+ %m-%d %H:%M '`</span>"
++#command=date '+ %m-%d %H:%M '
+ interval=60
+ 
+--- a/scripts/battery
++++ b/scripts/battery
+@@ -35,10 +35,10 @@
+ 
+ $status = $1;
+ $percent = $2;
+-$full_text = "$percent%";
++$full_text = "<span color='#93a1a1'>$percent%</span>";
+ 
+ if ($status eq 'Discharging') {
+-        $full_text .= ' ';
++        $full_text .= '';
+ } elsif ($status eq 'Charging') {
+         $full_text .= ' ';
+ }
+@@ -50,25 +50,7 @@
+ }
+ 
+ # print text
+-print "$full_text\n";
+ print "$short_text\n";
+-
+-# consider color and urgent flag only on discharge
+-if ($status eq 'Discharging') {
+-
+-	if ($percent < 20) {
+-		print "#FF0000\n";
+-	} elsif ($percent < 40) {
+-		print "#FFAE00\n";
+-	} elsif ($percent < 60) {
+-		print "#FFF600\n";
+-	} elsif ($percent < 85) {
+-		print "#A8FF00\n";
+-	}
+-
+-	if ($percent < 5) {
+-		exit(33);
+-	}
+-}
++print "$full_text\n";
+ 
+ exit(0);
+--- a/scripts/cpu_usage
++++ b/scripts/cpu_usage
+@@ -41,15 +41,7 @@
+ $cpu_usage eq -1 and die 'Can\'t find CPU information';
+ 
+ # Print short_text, full_text
+-printf "%.0f%%\n", $cpu_usage;
+-printf "%.0f%%\n", $cpu_usage;
+-
+-# Print color, if needed
+-if ($cpu_usage >= $t_crit) {
+-    print "#FF0000\n";
+-    exit 33;
+-} elsif ($cpu_usage >= $t_warn) {
+-    print "#FFFC00\n";
+-}
++printf "<span color='#93a1a1'>%.0f%%</span>\n", $cpu_usage;
++printf "<span color='#93a1a1'>%.0f%%</span>\n", $cpu_usage;
+ 
+ exit 0;
